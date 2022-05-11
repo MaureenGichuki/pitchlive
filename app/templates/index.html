@@ -1,0 +1,16 @@
+{% extends 'base.html'%}
+
+  {% block styles%}
+  {{ super() }}
+
+  <link rel ="stylesheet" type="text/css" href="{{url_for('static', filename='styles/index.css')}}">
+
+  {% endblock %}
+
+  {% block content %}
+
+<div class= "main">
+  <h1 id = "mains"> WELCOME TO PITCH LIVE</h1>
+  <p id="mainss">Choose from the Categories to view pitches</p>
+</div>
+  {% endblock%}

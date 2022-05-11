@@ -1,0 +1,27 @@
+<link rel ="stylesheet" type="text/css" href="{{url_for('static', filename='styles/index.css')}}">
+<div class="container">
+    
+     <ul>
+        {% macro displayPitches(pitch_list) %}
+        {% for pitch in pitch_list %}
+        <div class="card" >
+            
+            <h2> {{ pitch.title}} </h2>
+            <hr>
+
+                <p> {{ pitch.pitch }}</p>
+
+                <div>
+                    <button class="btn btn danger" id = "bt1">Upvote{{pitch.upvote.count()}}</button>
+                    <button class="btn btn danger" id = "bt2">Downvote{{pitch.downvote.count()}}</button>
+
+                </div>
+
+                    
+
+                </div>
+        {% endfor %}
+     </ul>
+    </div>
+  
+    {% endmacro %}

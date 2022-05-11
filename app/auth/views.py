@@ -22,7 +22,7 @@ def register():
 
         title = "New PitchLive Account"
 
-        return redirect(url_for('auth.login'))
+        return redirect(url_for('auth/login.html'))
 
 
 

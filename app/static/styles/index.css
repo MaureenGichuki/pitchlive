@@ -12,9 +12,14 @@
     margin-top: 100px;
 
 }
+#card2{
+    border-style: solid;
+    padding: 150px;
+    background-color: transparent;
+}
 .main{
     justify-content: center;
-    padding-top: 100px;
+    padding-top: 150px;
 }
 #mains{
     text-align: center;

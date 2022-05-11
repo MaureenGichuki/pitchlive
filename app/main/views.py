@@ -3,6 +3,7 @@ from . import main
 from flask_login import login_required,current_user
 from ..models import User,Comment,Pitch
 from .forms import UpdateProfile,CommentForm,PitchForm
+
 from .. import db
 
 
@@ -95,7 +96,6 @@ def techpitch():
         pitch=form.pitch.data
         new_pitch=Pitch(title=title,pitch=pitch,user=current_user)
         new_pitch.save_pitch()
-        return redirect(url_for('main.tech'))
 
     return render_template('pitch.html',pitch_form=form)
 
@@ -113,6 +113,7 @@ def health_comment():
         new_comment = Comment(comment=comment)
         db.session.add(new_comment)
         db.session.commit()
+        return redirect(url_for('main.category'))
 
 
     return render_template('comment.html',comment_form=form,comment=comments)
@@ -200,13 +201,3 @@ def update_profile(uname):
 
     return render_template('profile/update.html',form =form)
 
-# @main.route('/user/<uname>/update/pic',methods= ['POST'])
-# @login_required
-# def update_pic(uname):
-#     user = User.query.filter_by(username = uname).first()
-#     if 'photo' in request.files:
-#         filename = photos.save(request.files['photo'])
-#         path = f'photos/{filename}'
-#         user.profile_pic_path = path
-#         db.session.commit()
-#     return redirect(url_for('main.profile',uname=uname))

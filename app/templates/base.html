@@ -1,0 +1,23 @@
+{% extends 'bootstrap/base.html'%}
+
+
+{% block navbar %}
+    {% include 'navbar.html' %}
+{% endblock %}
+<link rel ="stylesheet" type="text/css" href="{{url_for('static', filename='styles/index.css')}}">
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+
+        <title> Pitch Live </title>
+
+    </head>
+    <body>
+
+        {% block content %}
+
+        {% endblock%}
+    </body>
+</html>

@@ -4,11 +4,10 @@ class Config:
     '''
     General configuration parent class
     '''
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:mimo1234@localhost/maureen'
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:mimo1234@localhost/mimopitchlive'
     SECRET_KEY = ('mimo')
     SQLALCHEMY_TRACK_MODIFICATIONS = True
     UPLOADED_PHOTOS_DEST ='app/static/photos'
-    SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL")
 
     #email configurations
 
@@ -25,10 +24,12 @@ class ProdConfig(Config):
     Args:
         Config: The parent configuration class with General configuration settings
     '''
-    SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL")
+    # SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL")
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:mimo1234@localhost/mimopitchlive'
+
 
 class TestConfig(Config):
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:mimo1234@localhost/maureen'
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:mimo1234@localhost/mimopitchlive'
 
 
 
@@ -40,7 +41,7 @@ class DevConfig(Config):
         Config: The parent configuration class with General configuration settings
     '''
 
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:mimo1234@localhost/maureen'
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:mimo1234@localhost/mimopitchlive'
 
     DEBUG = True
 

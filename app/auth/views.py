@@ -18,7 +18,7 @@ def register():
 
         mail_message("Welcome to pitchlive","email/welcome_user",user.email,user=user)
 
-        return redirect(url_for('auth/login.html'))
+        return redirect(url_for('main.index'))
 
     return render_template('auth/register.html',registration_form = form)
 

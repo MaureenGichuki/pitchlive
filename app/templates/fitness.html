@@ -12,7 +12,6 @@
     <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 review-card">
         <h2> {{ pitch.title}} </h2>
         <p> {{ pitch.pitch }}</p>
-        <button class="btn btn danger">  <a href="/fitness/comment">comment</a></button>
         <button class="btn btn danger" id = "bt1">Upvote{{pitch.upvote.count()}}</button>
         <button class="btn btn danger" id = "bt2">Downvote{{pitch.downvote.count()}}</button>
 
@@ -24,6 +23,8 @@
   <div class="col-md-9">
 
     {{macro.displayPitches(pitches)}}
+    <button class="btn btn danger">  <a href="/fitness/comment">comment</a></button>
+
 
 
     </div>

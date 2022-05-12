@@ -15,7 +15,7 @@ class User(UserMixin,db.Model):
     username = db.Column(db.String(2000))
     email = db.Column(db.String(2000),unique = True,index = True)
     role_id = db.Column(db.Integer,db.ForeignKey('roles.id'))
-    pass_secure = db.Column(db.Varchar(2000))
+    pass_secure = db.Column(db.String(2000))
     bio = db.Column(db.String(2000))
     profile_pic_path = db.Column(db.String())
     pitches=db.relationship('Pitch',backref = 'user',lazy="dynamic")

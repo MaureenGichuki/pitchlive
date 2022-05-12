@@ -27,7 +27,6 @@ This python application allows a user to view, comment, like or dislike pitches.
 ## Cloning
 * Open the terminal through {Ctrl+Alt+T}
 * git clone [https://github.com/MaureenGichuki/pitchlive.git]
-* cd newsapp
 
 ## Technologies Used
 * python3.8

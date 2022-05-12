@@ -10,6 +10,7 @@
     background-color: transparent;
     margin: 200px;
     margin-top: 100px;
+    margin-bottom: 0px;
 
 }
 #card2{
@@ -38,4 +39,11 @@
 }
 li{
     list-style: none;
+}
+#lbl{
+    margin-bottom: 50px;
+}
+.bttns{
+    display: flex;
+    flex-direction: row;
 }

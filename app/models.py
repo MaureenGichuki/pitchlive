@@ -34,6 +34,7 @@ class User(UserMixin,db.Model):
     def verify_password(self,password):
         return check_password_hash(self.pass_secure,password)
 
+   
     def __repr__(self):
         return f'User {self.username}'
 
@@ -57,8 +58,6 @@ class Pitch(db.Model):
     user_id = db.Column(db.Integer,db.ForeignKey("users.id"))
     upvote = db.relationship('Upvote',backref = 'user',lazy="dynamic")
     downvote = db.relationship('Downvote',backref = 'user',lazy="dynamic")
-
- 
 
     def save_pitch(self):
         db.session.add(self)

@@ -70,6 +70,21 @@ def fitnesspitch():
 
     return render_template('pitch.html',pitch_form=form)
 
+@main.route('/technology/pitch',methods= ['GET','POST'])
+@login_required
+def techpitch():
+   
+    form=PitchForm()
+
+    if form.validate_on_submit():
+        title = form.title.data
+        pitch=form.pitch.data
+        new_pitch=Pitch(title=title,pitch=pitch,user=current_user)
+        new_pitch.save_pitch()
+        return redirect(url_for('main.tech'))
+
+    return render_template('pitch.html',pitch_form=form)
+
 @main.route('/career/pitch',methods= ['GET','POST'])
 @login_required
 def careerpitch():
@@ -85,19 +100,7 @@ def careerpitch():
 
     return render_template('pitch.html',pitch_form=form)
 
-@main.route('/technology/pitch',methods= ['GET','POST'])
-@login_required
-def techpitch():
-   
-    form=PitchForm()
 
-    if form.validate_on_submit():
-        title = form.title.data
-        pitch=form.pitch.data
-        new_pitch=Pitch(title=title,pitch=pitch,user=current_user)
-        new_pitch.save_pitch()
-
-    return render_template('pitch.html',pitch_form=form)
 
 
 @main.route('/health/comment',methods= ['GET','POST'])
@@ -113,7 +116,7 @@ def health_comment():
         new_comment = Comment(comment=comment)
         db.session.add(new_comment)
         db.session.commit()
-        return redirect(url_for('main.category'))
+        return redirect(url_for('main.heal'))
 
 
     return render_template('comment.html',comment_form=form,comment=comments)
@@ -132,6 +135,7 @@ def fitness_comment():
         new_comment = Comment(comment=comment)
         db.session.add(new_comment)
         db.session.commit()
+        return redirect(url_for('main.tech'))
 
 
 
@@ -150,6 +154,7 @@ def career_comment():
         new_comment = Comment(comment=comment)
         db.session.add(new_comment)
         db.session.commit()
+        return redirect(url_for('main.car'))
 
 
 
@@ -160,7 +165,6 @@ def career_comment():
 def technology_comment():
 
     form = CommentForm()
-
     comments = Comment.query.all()
     if form.validate_on_submit():
         comment = form.comment.data
@@ -168,10 +172,12 @@ def technology_comment():
         new_comment = Comment(comment=comment)
         db.session.add(new_comment)
         db.session.commit()
+        return redirect(url_for('main.tech'))
 
 
 
     return render_template('comment.html',comment_form=form)
+
 
 @main.route('/user/<uname>')
 def profile(uname):

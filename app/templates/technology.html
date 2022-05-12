@@ -1,31 +1,28 @@
-{% extends 'base.html'%}
+<!-- {% extends 'base.html'%}
 {% import 'macros.html' as macro%}
-{% block content %}
 
+{% block content %} -->
+<div class="container">
 <link rel ="stylesheet" type="text/css" href="{{url_for('static', filename='styles/index.css')}}">
 
-<div class="container">
-
-    <h1>Technology Pitches</h1>
-
-    <div class="col-md-6">
-        <h2>Pitches Posted</h2>
-        {% for pitch in pitch_list %}
-        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 review-card">
-            <h2> {{ pitch.title}} </h2>
-            <p> {{ pitch.pitch }}</p>
-        </div>
-        {% endfor %}
-        <button class="btn btn-default"><a href="/technology/pitch"> Post a fitness pitch</a></button>
-
+  <h1>Technology Pitches</h1>
+  <div class="col-md-6">
+    <h2>Pitches Posted</h2>
+      {% for pitch in pitch_list%}
+      <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 review-card">
+          <h2> {{ pitch.title}} </h2>
+          <p> {{ pitch.pitch }}</p>
+          <button class="btn btn danger">  <a href="/technology/comment">comment</a></button>
+          <button class="btn btn danger" id = "bt1">Upvote{{pitch.upvote.count()}}</button>
+          <button class="btn btn danger" id = "bt2">Downvote{{pitch.downvote.count()}}</button>
+      </div>
+      {% endfor %}
+      <button class="btn btn-default"><a href="/technology/pitch"> Post a Technology Pitch</a></button>
     </div>
-    <div class="col-md-9">
-        <div class="card" id="card1">
-
-            {{macro.displayPitches(pitches)}}
-
-        <button class="btn btn danger">  <a href="/technology/comment">comment</a></button>
-        </div>
+    <!-- <div class="col-md-9">
+      
+      {{macro.displayPitches(pitches)}}
+  
+      </div> -->
     </div>
-</div>
-{% endblock%}
+<!-- {% endblock%} -->

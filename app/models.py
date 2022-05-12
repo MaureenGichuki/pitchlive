@@ -12,11 +12,11 @@ def load_user(user_id):
 class User(UserMixin,db.Model):
     __tablename__ = 'users'
     id = db.Column(db.Integer,primary_key = True)
-    username = db.Column(db.String(240))
-    email = db.Column(db.String(240),unique = True,index = True)
+    username = db.Column(db.String(2000))
+    email = db.Column(db.String(2000),unique = True,index = True)
     role_id = db.Column(db.Integer,db.ForeignKey('roles.id'))
-    pass_secure = db.Column(db.String(240))
-    bio = db.Column(db.String(255))
+    pass_secure = db.Column(db.VarChar(2000))
+    bio = db.Column(db.String(2000))
     profile_pic_path = db.Column(db.String())
     pitches=db.relationship('Pitch',backref = 'user',lazy="dynamic")
     
@@ -46,7 +46,7 @@ class Role(db.Model):
     users = db.relationship('User',backref = 'role',lazy="dynamic")
 
     def __repr__(self):
-        return f'User {self.name}'
+        return f'Role {self.name}'
 
 
 class Pitch(db.Model):
@@ -68,8 +68,8 @@ class Pitch(db.Model):
         pitches = Pitch.query.order_by(Pitch.posted.desc())
         return pitches
 
-
-
+    def __repr__(self):
+        return f'Pitch {self.pitch}'
 
 class Comment(db.Model):
 
@@ -89,6 +89,9 @@ class Comment(db.Model):
     def get_comments(cls,id):
             comments = Comment.query.filter_by(pitch_id=id).all()
             return comments
+    
+    def __repr__(self):
+        return f'Comment {self.comment}'
 
 class Upvote(db.Model):
 
@@ -111,6 +114,9 @@ class Upvote(db.Model):
             upvotes = Upvote.query.filter_by(pitch_id=id).all()
             return upvotes
 
+    def __repr__(self):
+        return f'Upvote {self.user_id}:{self.pitch_id}'
+
 class Downvote(db.Model):
 
     __tablename__ = 'downpvotes'
@@ -131,6 +137,9 @@ class Downvote(db.Model):
     def get_downvotes(cls,id):
             downvotes = Downvote.query.filter_by(pitch_id=id).all()
             return downvotes
+
+    def __repr__(self):
+            return f'Upvote {self.user_id}:{self.pitch_id}'
 
 
 
